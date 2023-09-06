@@ -1,0 +1,15 @@
+---
+- name: Install haproxy
+  apt:
+    name: haproxy
+    state: present
+
+- name: Copy haproxy configuration file
+  copy:
+    src: templates/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+
+- name: Start haproxy
+  service:
+    name: haproxy
+    state: started

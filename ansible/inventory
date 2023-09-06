@@ -1,0 +1,9 @@
+[app_servers]
+app-server-1 ansible_ssh_host=34.69.238.134 ansible_remote_user=debian
+app-server-2 ansible_ssh_host=34.69.133.172 ansible_remote_user=debian
+
+[load_balancer]
+load-balancer ansible_ssh_host=192.168.1.12
+
+[mysql_server]
+mysql-server ansible_ssh_host=34.136.1.167 ansible_remote_user=debian

@@ -1,0 +1,36 @@
+---
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Copy nginx configuration file
+  copy:
+    src: templates/nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: Start nginx
+  service:
+    name: nginx
+    state: started
+
+- name: Create a PHP website directory
+  file:
+    path: /var/www/html/php
+    state: directory
+
+- name: Copy the PHP index file
+  copy:
+    src: templates/index.php
+    dest: /var/www/html/php/index.php
+
+- name: Update nginx configuration file
+  lineinfile:
+    path: /etc/nginx/nginx.conf
+    line: include /etc/nginx/conf.d/php.conf
+    state: present
+
+- name: Reload nginx
+  service:
+    name: nginx
+    state: reloaded

@@ -1,0 +1,20 @@
+---
+- name: Install PHP
+  apt:
+    name: php
+    state: present
+
+- name: Install PHP modules
+  apt:
+    name:
+      - php-fpm
+      - php-mysql
+      - php-curl
+      - php-gd
+      - php-xml
+    state: present
+
+- name: Start PHP-FPM
+  service:
+    name: php-fpm
+    state: started
